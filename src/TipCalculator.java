@@ -14,16 +14,16 @@ public class TipCalculator {
         System.out.print("Enter the tip percentage as an integer: ");
         int tipPercentage = scan.nextInt();
         scan.nextLine();
-        double itemPrice = scan.nextDouble();
+        double itemPrice = 0;
 
         while (itemPrice != -1) {
-            System.out.print("Please enter the price of an item you've ordered in dollars and cents:  ");
-            itemPrice = scan.nextDouble();
-            scan.nextLine();
-            prices.add(itemPrice);
-
-
-
-
+        System.out.print("Please enter the price of an item you've ordered in dollars and cents (-1 to end):  ");
+        itemPrice = scan.nextDouble();
+        scan.nextLine();
+        prices.add(itemPrice);
+        }
+        int index = prices.size() - 1;
+        prices.remove(index);
+        System.out.println("done " + prices);
     }
 }
