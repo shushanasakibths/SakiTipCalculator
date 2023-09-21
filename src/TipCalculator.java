@@ -1,7 +1,10 @@
 import java.util.Scanner;
+import java.util.*;
+
 public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        ArrayList<Double> prices = new ArrayList<Double>();
 
         System.out.println("This is the tip calculator!");
         System.out.println("---------------------------");
