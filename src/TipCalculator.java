@@ -17,13 +17,20 @@ public class TipCalculator {
         double itemPrice = 0;
 
         while (itemPrice != -1) {
-        System.out.print("Please enter the price of an item you've ordered in dollars and cents (-1 to end):  ");
-        itemPrice = scan.nextDouble();
-        scan.nextLine();
-        prices.add(itemPrice);
+            System.out.print("Please enter the price of an item you've ordered in dollars and cents (-1 to end):  ");
+            itemPrice = scan.nextDouble();
+            scan.nextLine();
+            prices.add(itemPrice);
         }
         int index = prices.size() - 1;
         prices.remove(index);
+        double sumOfPrices = 0;
+        for(int i = 0; i < prices.size(); i++)
+        {
+            sumOfPrices = sumOfPrices + prices.get(i);
+        }
+        return sumOfPrices;
+
         System.out.println("done " + prices);
     }
 }
