@@ -14,9 +14,15 @@ public class TipCalculator {
         System.out.print("Enter the tip percentage as an integer: ");
         int tipPercentage = scan.nextInt();
         scan.nextLine();
-        System.out.print("Please enter the price of an item you've ordered:  ");
-        int tipPercentage = scan.nextInt();
-        scan.nextLine();
+        double itemPrice = scan.nextDouble();
+
+        while (itemPrice != -1) {
+            System.out.print("Please enter the price of an item you've ordered in dollars and cents:  ");
+            itemPrice = scan.nextDouble();
+            scan.nextLine();
+            prices.add(itemPrice);
+
+
 
 
     }
