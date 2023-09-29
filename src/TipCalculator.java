@@ -1,10 +1,15 @@
 import java.util.Scanner;
-import java.util.*;
+import java.util.ArrayList;
+import java.text.DecimalFormat;
+
+// I learned how to use lists from here: https://www.w3schools.com/java/java_arraylist.asp
 
 public class TipCalculator {
+    private static final DecimalFormat df = new DecimalFormat("00.00");
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         ArrayList<Double> prices = new ArrayList<Double>();
+        ArrayList<String> foodItems = new ArrayList<String>();
 
         System.out.println("This is the tip calculator!");
         System.out.println("---------------------------");
@@ -12,25 +17,54 @@ public class TipCalculator {
         int numberOfPeople = scan.nextInt();
         scan.nextLine();
         System.out.print("Enter the tip percentage as an integer: ");
-        int tipPercentage = scan.nextInt();
+        int tip = scan.nextInt();
         scan.nextLine();
         double itemPrice = 0;
+        String itemName = "0";
 
         while (itemPrice != -1) {
             System.out.print("Please enter the price of an item you've ordered in dollars and cents (-1 to end):  ");
             itemPrice = scan.nextDouble();
             scan.nextLine();
             prices.add(itemPrice);
+            System.out.print("Enter the item:  ");
+            itemName = scan.nextLine();
+            scan.nextLine();
+            foodItems.add(itemName);
         }
+
         int index = prices.size() - 1;
         prices.remove(index);
-        double sumOfPrices = 0;
-        for(int i = 0; i < prices.size(); i++)
-        {
-            sumOfPrices = sumOfPrices + prices.get(i);
-        }
-        return sumOfPrices;
 
-        System.out.println("done " + prices);
+        double sumPrices = 0;
+        for (int i = 0; i < prices.size(); i++) {
+            sumPrices = sumPrices + prices.get(i);
+        }
+
+        double tipPercentage = (double) tip / 100 ;
+
+        double totalTip = tipPercentage * sumPrices;
+
+        double billWithTip = sumPrices + totalTip;
+
+        double perPersonCostBeforeTip = sumPrices / numberOfPeople;
+
+        double tipPerPerson = totalTip / numberOfPeople;
+
+        double overallCostPerPerson = billWithTip / numberOfPeople;
+
+        System.out.println("---------------------------");
+        System.out.println("Total bill before tip: $" + df.format(sumPrices));
+        System.out.println("Total percentage: " + tip + "%");
+        System.out.println("Total tip: $" + df.format(totalTip));
+        System.out.println("Total bill with tip: $" + df.format(billWithTip));
+        System.out.println("Per person cost before tip: $" + df.format(perPersonCostBeforeTip));
+        System.out.println("Tip per person: $" + df.format(tipPerPerson));
+        System.out.println("Total cost per person: $" + df.format(overallCostPerPerson));
+        System.out.println("---------------------------");
+
+
     }
 }
+
+
