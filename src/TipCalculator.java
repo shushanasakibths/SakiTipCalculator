@@ -23,13 +23,15 @@ public class TipCalculator {
         String itemName = "0";
 
         while (itemPrice != -1) {
-            System.out.print("Please enter the price of an item you've ordered in dollars and cents (-1 to end):  ");
+            System.out.print("Please enter the price of an item you've ordered in dollars and cents, e.g. 12.50 (-1 to end):  ");
             itemPrice = scan.nextDouble();
             scan.nextLine();
             prices.add(itemPrice);
+            if (itemPrice == -1) {
+                break;
+            }
             System.out.print("Enter the item:  ");
             itemName = scan.nextLine();
-            scan.nextLine();
             foodItems.add(itemName);
         }
 
@@ -53,15 +55,24 @@ public class TipCalculator {
 
         double overallCostPerPerson = billWithTip / numberOfPeople;
 
+        double costPerItem = sumPrices / prices.size();
+
         System.out.println("---------------------------");
         System.out.println("Total bill before tip: $" + df.format(sumPrices));
         System.out.println("Total percentage: " + tip + "%");
         System.out.println("Total tip: $" + df.format(totalTip));
         System.out.println("Total bill with tip: $" + df.format(billWithTip));
+        System.out.println("Cost per item: $" + df.format(costPerItem));
         System.out.println("Per person cost before tip: $" + df.format(perPersonCostBeforeTip));
         System.out.println("Tip per person: $" + df.format(tipPerPerson));
         System.out.println("Total cost per person: $" + df.format(overallCostPerPerson));
         System.out.println("---------------------------");
+        System.out.println("Items ordered:)");
+
+        // I learned how to use for loops to iterate through lists from my friend who took AP CSA with Mr. Miller  last year :p
+        for (int i = 0; i <= foodItems.size(); i++) {
+            System.out.println(foodItems.get(i));
+        }
 
 
     }
